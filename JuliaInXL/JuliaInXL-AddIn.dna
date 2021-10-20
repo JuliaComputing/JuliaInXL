@@ -1,0 +1,44 @@
+<DnaLibrary Name="JuliaInXL Add-In" RuntimeVersion="v4.0" Language="C#">
+  <ExternalLibrary Path="JuliaInXL.dll" ExplicitRegistration="true" LoadFromBytes="true" ComServer="true" Pack="true" />
+  <Reference Path="NetMQ.dll" Pack="true" />
+  <Reference Path="AsyncIO.dll" Pack="true" />
+  <Reference Path="Newtonsoft.Json.dll" Pack="true" />
+  <Reference Path="ExcelDna.Registration.dll" Pack="true" />
+  <Reference Path="System.Net.Http.dll" Pack="true" />
+  <File Path="System.Net.Http.xml" Pack="true"/>
+  <Reference Path="System.Net.Http.Extensions.dll" Pack="true" />
+  <File Path="System.Net.Http.Extension.xml" Pack="true" />
+  <Reference Path="System.Net.Http.Primitives.dll" Pack="true" />
+  <File Path="System.Net.Http.Primitives.xml" Pack="true" />
+  <Reference Path="System.Net.Http.WebRequest.dll" Pack="true" />
+  <File Path="System.Net.Http.WebRequest.xml" Pack="true" />
+  <Reference Path="System.IO.dll" Pack="true" />
+  <File Path="System.IO.xml" Pack="true" />
+  <Reference Path="System.Runtime.dll" Pack="true" />
+  <File Path="System.Runtime.xml" Pack="true" />
+  <Reference Path="System.Threading.Tasks.dll" Pack="true" />
+  <File Path="System.Threading.Tasks.xml" Pack="true" />
+  <File Path="JuliaInXL.dll.config" Pack="true" />
+  <Image Name="juliaicon" Path="juliaicon.png" Pack="true"/>
+  <Image Name="juliafileopen" Path="juliafileopen.png" Pack="true"/>
+  <Image Name="juliafileselection" Path="juliafileselection.png" Pack="true"/>
+  <Image Name="juliafileinclude" Path="juliafileinclude.png" Pack="true"/>
+
+  <!-- 
+        The RuntimeVersion attribute above allows two settings:
+        * RuntimeVersion="v2.0" - for .NET 2.0, 3.0 and 3.5
+        * RuntimeVersion="v4.0" - for .NET 4 and 4.5
+
+        Additional referenced assemblies can be specified by adding 'Reference' tags. 
+        These libraries will not be examined and registered with Excel as add-in libraries, 
+        but will be packed into the -packed.xll file and loaded at runtime as needed.
+        For example:
+       
+        <Reference Path="Another.Library.dll" Pack="true" />
+  
+        Excel-DNA also allows the xml for ribbon UI extensions to be specified in the .dna file.
+        See the main Excel-DNA site at http://excel-dna.net for downloads of the full distribution.
+    -->
+  <!-- Some images that can be used in the Ribbon ui -->
+  <!-- <Image Name="JuliaComputing" Path="..\..\JuliaComputing_Icon.ico" Pack="true" /> -->
+</DnaLibrary>
