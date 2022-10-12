@@ -6,7 +6,7 @@ The JuliaInXL system is composed of two parts, a Julia package and an Excel Plug
 
 The Excel plugin is distributed as an installable exe: JuliaProfessional_JuliaInXL_Addin_vW.X.Y.Z.exe, where vW.X.Y.Z is the associated version number of Julia Professional.  Running this installer will install the XLL into `\[APPDATA]\Roaming\Microsoft\AddIns\`.  Use of the JuliaInXL plug-in depends on .NET v4.0 or later being available on the system.  After installation, the add-in needs to be enabled via either [File -> Options -> Add-ins](https://support.office.com/en-us/article/View-manage-and-install-add-ins-in-Office-programs-16278816-1948-4028-91E5-76DCA5380F8D) menu entry or the [Developer/Add-In](https://msdn.microsoft.com/en-us/library/bb608625.aspx) ribbon button.
 
-The Julia language package can be installed by doing (on the Julia REPL) `Pkg.clone("https://github.com/JuliaComputing/JuliaInXL.jl.git")`, if you have the rights to that repository.  However, you will most likely be provided this package as part of your Julia Professional Bundle. This package depends on two public packages, `JuliaWebAPI` and `Reexport`. 
+The Julia language package can be installed by doing (on the Julia REPL) `Pkg.add("JuliaInXL")`, if you have the rights to that repository.  However, you will most likely be provided this package as part of your Julia Professional Bundle. This package depends on two public packages, `JuliaWebAPI` and `Reexport`. 
 
 ### Usage Workflow
 
