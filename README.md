@@ -2,13 +2,26 @@
 
 ### Installation
 
-The JuliaInXL system is composed of two parts, a Julia package and an Excel Plugin. The Excel plugin itself consists of an XLL add-in. 
+The JuliaInXL system is composed of two parts, a Julia package and an Excel Plugin. The Excel plugin itself consists of an Microsoft Excel add-in.
+The Excel add-in is included in the distribution of the Julia package, so you only need to follow these steps:
 
-The Excel plugin is distributed as an installable exe: JuliaProfessional_JuliaInXL_Addin_vW.X.Y.Z.exe, where vW.X.Y.Z is the associated version number of Julia Professional.  Running this installer will install the XLL into `\[APPDATA]\Roaming\Microsoft\AddIns\`.  Use of the JuliaInXL plug-in depends on .NET v4.0 or later being available on the system.  After installation, the add-in needs to be enabled via either [File -> Options -> Add-ins](https://support.office.com/en-us/article/View-manage-and-install-add-ins-in-Office-programs-16278816-1948-4028-91E5-76DCA5380F8D) menu entry or the [Developer/Add-In](https://msdn.microsoft.com/en-us/library/bb608625.aspx) ribbon button.
+0. If you don't have julia installed on your Windows system, follow [these](https://github.com/JuliaLang/juliaup#windows) instructions to get it. We only support the Windows distribution (no WSL yet, but stay tuned).
+1. `import Pkg; Pkg.add("JuliaInXL")` (or `using JuliaInXL` and reply `yes` to the prompt to install)
+2. If the installer doesn't popup, we need to trigger the package build step again (usually happens automatically, but may fail if you have tried multiple times unsuccessfully): `import Pkg; Pkg.build()`.
+3. You should be seeing an installer by now. Click yes to all.
+4. Close the julia window, open Excel and go to the JULIA tab
+5. Click Launch Local Julia
+6. Use `jleval` to run julia code
 
-The Julia language package can be installed by doing (on the Julia REPL) `Pkg.add("JuliaInXL")`, if you have the rights to that repository.  However, you will most likely be provided this package as part of your Julia Professional Bundle. This package depends on two public packages, `JuliaWebAPI` and `Reexport`. 
 
-### Usage Workflow
+#### Useful tips
+
+1. Typing something in `=jleval("JULIA PROGRAM")` is like typing in the repl. You can try doing `=jleval("x = 1")` and then investigate x in the REPL
+2. Excel only triggers Julia execution once - if you have `B2` `=jleval("rand()") + A1` and change the `A1` cell, B2 will not update. 
+3. `jlcall` only supports floats and strings. Passing integers will fail. It's mostly designed to be fast. It's recommended to stick with `jleval` for maximum flexibility.
+4. Try to separate the logic between Excel and Julia. While it can be very satisfying to use excel as a REPL, it's better to keep a reproducible analysis in a `.jl` file and invoke it (possibly with special parameters) from Excel. That way you get the best of both worlds, without making entangled [spaghetti](https://en.wikipedia.org/wiki/Spaghetti_code). JuliaInXL shines most in the `communication` between Julia and Excel; if you find yourself using it as an IDE, you may want to try the [Julia Extension a try](https://code.visualstudio.com/docs/languages/julia) or [Pluto.jl](https://github.com/fonsp/Pluto.jl)!
+
+### Advanced Usage Workflow
 
 #### Getting Started
 The primary supported workflow is for interactive development of Julia programs alongside Excel. Once the packages are installed, start Excel, and a Julia REPL. On the Julia repl, type `using JuliaInXL` to make the environment ready for calling via Excel. After that, define your functions as normal on the REPL. To try an an example, use a demo file included with the package: `include("C:\\Users\\<username>\\AppData\\Local\\JuliaPro-W.X.Y.Z\\Julia-W.X.Y\\share\\julia\\site\\vW.X\\JuliaInXL\\test\\sim.jl")` where `<username>` is your current Windows username and W.X.Y.Z are integers representing the current release of Julia Professional. (When using theses examples, you will need the `Distributions.jl` package installed. Please run `Pkg.add("Distributions")` on the Julia REPL if you do not have this already installed.)
